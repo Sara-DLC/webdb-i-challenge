@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id',  (req, res) => {
     const { id } = req.params;
     const changes = req.body;
 
@@ -72,7 +72,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id',  (req, res) => {
     db('accounts')
     .where({ id: req.params.id })
     .del()
@@ -87,9 +87,39 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-//validation
+//middleware (just for practice)
+
+// function validateId (req, res, next) {
+//     const id = req.params.id;
+//     db.select(id)
+//     .then(account => {
+//         if (account) {
+//             req.account = account
+//             next()
+//         } else {
+//             res.status(400).json({
+//                 message: "invalid account id"
+//             });
+//         };
+//     })
+//     .catch(error => {
+//         res.status(500).json({ error: "Account does not exist", error
+//         });
+//     });
+// };
 
 
+// function validateAccount (req, res, next) {
+//     if (Object.keys(req.body).length > 0) {
+//         if (req.body.account && req.body.budget){
+//             next();
+//         } else {
+//             res.status(400).json({ errorMessage: "Please provide an account name and a budget for the account."})
+//         } 
+//     } else {
+//         res.status(400).json({ errorMessage: "There was an error while saving the account to the database" })
+//     };
+// };
 
 
 

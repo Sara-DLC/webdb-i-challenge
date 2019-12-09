@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+    const query = 
     db
     .select('*')
     .from('accounts')
